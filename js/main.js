@@ -210,18 +210,11 @@ function createEarth() {
   const meridian = new THREE.Line(meridianGeometry, ringMaterial);
   earthGroup.add(meridian);
 
-  // === LAYER 7: 2N STUDIO text on globe ===
-  const textSprite = createTextSprite('2N STUDIO');
-  textSprite.position.set(0, 0, radius + 0.3);
-  textSprite.scale.set(2.5, 0.8, 1);
-  earthGroup.add(textSprite);
-
   // Store references for animation
   earthGroup.userData = {
     innerCore,
     outerShell,
-    nodes,
-    textSprite
+    nodes
   };
 
   // Initial state - very small and far away
@@ -229,45 +222,6 @@ function createEarth() {
   earthGroup.position.z = -10;
 
   scene.add(earthGroup);
-}
-
-function createTextSprite(text) {
-  const canvas = document.createElement('canvas');
-  canvas.width = 512;
-  canvas.height = 128;
-  const ctx = canvas.getContext('2d');
-
-  // Transparent background
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Text styling
-  ctx.font = 'bold 72px Orbitron, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-
-  // Glow effect - ice blue glow
-  ctx.shadowColor = '#a0e8ff';
-  ctx.shadowBlur = 25;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-
-  // Draw text with glow (draw multiple times for stronger glow)
-  ctx.fillStyle = '#e0f4ff';
-  for (let i = 0; i < 3; i++) {
-    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
-  }
-
-  // Create texture and sprite
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.needsUpdate = true;
-
-  const material = new THREE.SpriteMaterial({
-    map: texture,
-    transparent: true,
-    opacity: 1
-  });
-
-  return new THREE.Sprite(material);
 }
 
 function animate() {
@@ -296,10 +250,6 @@ function animate() {
       earthGroup.userData.nodes.material.opacity = 0.6 + Math.sin(time * 2) * 0.3;
     }
 
-    // Keep text facing camera
-    if (earthGroup.userData.textSprite) {
-      earthGroup.userData.textSprite.quaternion.copy(camera.quaternion);
-    }
   }
 
   renderer.render(scene, camera);
@@ -351,13 +301,6 @@ function startIntroAnimation() {
     yoyo: true,
     repeat: 3
   }, 3);
-
-  // Phase 2.5: Fade out text on globe before it shrinks
-  masterTimeline.to(earthGroup.userData.textSprite.material, {
-    opacity: 0,
-    duration: 0.8,
-    ease: 'power2.out'
-  }, 4.5);
 
   // Phase 3: Earth moves to corner (5-7s)
   const logoRect = document.querySelector('.logo').getBoundingClientRect();
@@ -437,11 +380,6 @@ function skipIntro() {
   gsap.set(earthGroup.scale, { x: 0.15, y: 0.15, z: 0.15 });
   gsap.set(earthGroup.position, { x: -3, y: 2, z: 3 });
   gsap.set(sceneContainer, { opacity: 0 });
-
-  // Hide text on globe
-  if (earthGroup.userData.textSprite) {
-    earthGroup.userData.textSprite.material.opacity = 0;
-  }
 
   logo.classList.add('visible');
   heroContent.classList.add('visible');
@@ -604,7 +542,7 @@ function initEventListeners() {
   // }
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
@@ -615,22 +553,45 @@ function handleFormSubmit(e) {
   submitBtn.innerHTML = '<span>Sending...</span>';
   submitBtn.disabled = true;
 
-  // Simulate form submission (replace with actual API call)
+  try {
+    // Send form data to PHP script
+    const formData = new FormData(form);
+
+    // Convert FormData to JSON for API
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // Success state
+      submitBtn.innerHTML = '<span>Message Sent!</span>';
+      submitBtn.style.background = '#00cc66';
+      form.reset();
+    } else {
+      // Error state
+      submitBtn.innerHTML = '<span>Failed to Send</span>';
+      submitBtn.style.background = '#ef4444';
+      alert(result.message || 'Failed to send message. Please try again.');
+    }
+  } catch (error) {
+    // Network error
+    submitBtn.innerHTML = '<span>Error</span>';
+    submitBtn.style.background = '#ef4444';
+    alert('Network error. Please check your connection and try again.');
+  }
+
+  // Reset button after delay
   setTimeout(() => {
-    // Success state
-    submitBtn.innerHTML = '<span>Message Sent!</span>';
-    submitBtn.style.background = '#00cc66';
-
-    // Reset form
-    form.reset();
-
-    // Reset button after delay
-    setTimeout(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.style.background = '';
-      submitBtn.disabled = false;
-    }, 3000);
-  }, 1500);
+    submitBtn.innerHTML = originalText;
+    submitBtn.style.background = '';
+    submitBtn.disabled = false;
+  }, 3000);
 }
 
 // =============================================

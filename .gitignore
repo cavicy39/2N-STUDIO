@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment
+.env
+.env.local
+.vercel
+
+# Composer (no longer needed)
+composer.json
+composer.lock
+
+# PHP (no longer needed)
+send-email.php
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
