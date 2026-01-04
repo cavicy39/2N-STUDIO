@@ -40,7 +40,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Combined scroll handler for better performance
-let lastScrollTop = 0;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
@@ -54,8 +53,6 @@ window.addEventListener('scroll', () => {
         navbar.style.backgroundColor = '#ffffff';
         navbar.style.backdropFilter = 'none';
     }
-    
-    lastScrollTop = scrollTop;
     
     // Active navigation state based on scroll position
     const sections = document.querySelectorAll('section[id]');
@@ -197,13 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Performance: Lazy load images fallback for older browsers
-// Note: For production, consider hosting the polyfill locally or using SRI
+// Note: Currently not needed as there are no images, but included for future extensibility
 if (!('loading' in HTMLImageElement.prototype)) {
     // Fallback for browsers that don't support native lazy loading
+    // For production with images, use a locally hosted polyfill with verified SRI
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    // Adding integrity check for security (SRI)
-    script.integrity = 'sha512-3nbhD3ZFc/VmrIUYHwxvN5Y0TTrCjALBl3P6zKl+vQyy6M9b5mD/P9IgRNJwxY1t0cR1a2N6IMVmH8PQDDPvvw==';
     script.crossOrigin = 'anonymous';
     document.body.appendChild(script);
 }
