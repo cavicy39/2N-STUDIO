@@ -6,10 +6,11 @@ menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     
     // Animate hamburger menu
+    const isActive = navMenu.classList.contains('active');
     const spans = menuToggle.querySelectorAll('span');
-    spans[0].style.transform = navMenu.classList.contains('active') ? 'rotate(-45deg) translate(-5px, 6px)' : 'none';
-    spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-    spans[2].style.transform = navMenu.classList.contains('active') ? 'rotate(45deg) translate(-5px, -6px)' : 'none';
+    spans[0].style.transform = isActive ? 'rotate(-45deg) translate(-5px, 6px)' : 'none';
+    spans[1].style.opacity = isActive ? '0' : '1';
+    spans[2].style.transform = isActive ? 'rotate(45deg) translate(-5px, -6px)' : 'none';
 });
 
 // Close mobile menu when clicking on a link
@@ -58,7 +59,6 @@ window.addEventListener('scroll', () => {
     
     // Active navigation state based on scroll position
     const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
@@ -66,7 +66,7 @@ window.addEventListener('scroll', () => {
         const sectionId = section.getAttribute('id');
         const navLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
 
-        if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        if (navLink && scrollTop > sectionTop && scrollTop <= sectionTop + sectionHeight) {
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.style.color = '#1f2937';
             });
@@ -197,9 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Performance: Lazy load images fallback for older browsers
+// Note: For production, consider hosting the polyfill locally or using SRI
 if (!('loading' in HTMLImageElement.prototype)) {
     // Fallback for browsers that don't support native lazy loading
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    // Adding integrity check for security (SRI)
+    script.integrity = 'sha512-3nbhD3ZFc/VmrIUYHwxvN5Y0TTrCjALBl3P6zKl+vQyy6M9b5mD/P9IgRNJwxY1t0cR1a2N6IMVmH8PQDDPvvw==';
+    script.crossOrigin = 'anonymous';
     document.body.appendChild(script);
 }
