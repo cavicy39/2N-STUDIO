@@ -221,12 +221,12 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 15px 30px;
+  padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  min-height: 140px;
+  min-height: 260px;
 }
 
 /* Logo */
@@ -237,7 +237,7 @@ body {
   opacity: 0;
   transform: translateX(-20px);
   transition: all var(--transition-medium);
-  min-height: 120px;
+  min-height: 240px;
 }
 
 .logo.visible {
@@ -246,11 +246,11 @@ body {
 }
 
 .logo-image {
-  height: 120px !important;
+  height: 240px !important;
   width: auto;
-  max-width: 400px;
+  max-width: 800px;
   object-fit: contain;
-  filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.4));
+  filter: drop-shadow(0 0 20px rgba(0, 255, 204, 0.5));
   transition: filter var(--transition-fast);
 }
 
@@ -933,11 +933,12 @@ body {
 @media (max-width: 768px) {
   .nav {
     padding: 15px 20px;
+    min-height: 200px;
   }
 
   .logo-image {
-    height: 90px !important;
-    max-width: 300px;
+    height: 180px !important;
+    max-width: 600px;
   }
 
   .logo-text {
