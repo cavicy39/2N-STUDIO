@@ -243,6 +243,17 @@ body {
   transform: translateX(0);
 }
 
+.logo-image {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.3));
+  transition: filter var(--transition-fast);
+}
+
+.logo-image:hover {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 204, 0.6));
+}
+
 .logo-earth {
   width: 40px;
   height: 40px;
@@ -856,6 +867,11 @@ body {
   border-top: 1px solid rgba(0, 255, 204, 0.1);
 }
 
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .footer p {
   color: var(--color-text-dim);
   font-size: 0.95rem;
@@ -865,6 +881,31 @@ body {
 .footer p:last-child {
   color: var(--color-primary);
   opacity: 0.7;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+  letter-spacing: 0.5px;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.footer-divider {
+  color: var(--color-text-dim);
+  opacity: 0.5;
 }
 
 /* Responsive Design */
@@ -887,6 +928,10 @@ body {
 @media (max-width: 768px) {
   .nav {
     padding: 15px 20px;
+  }
+
+  .logo-image {
+    height: 40px;
   }
 
   .logo-text {
