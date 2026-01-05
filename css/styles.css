@@ -244,8 +244,10 @@ body {
 }
 
 .logo-image {
-  height: 50px;
+  height: 80px;
   width: auto;
+  max-width: 280px;
+  object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.3));
   transition: filter var(--transition-fast);
 }
@@ -460,11 +462,12 @@ body {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: clamp(2.5rem, 10vw, 6rem);
   font-weight: 900;
   line-height: 1;
   margin-bottom: 20px;
   letter-spacing: 5px;
+  white-space: nowrap;
 }
 
 .title-line {
@@ -931,7 +934,8 @@ body {
   }
 
   .logo-image {
-    height: 40px;
+    height: 60px;
+    max-width: 200px;
   }
 
   .logo-text {
@@ -944,7 +948,8 @@ body {
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 15vw, 5rem);
+    font-size: clamp(2rem, 12vw, 4rem);
+    white-space: normal;
   }
 
   .hero-cta {
