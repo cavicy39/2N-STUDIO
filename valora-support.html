@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Valora Health Support Centre - Help, FAQs, and troubleshooting for Valora Health app">
+  <title>Valora Health Support | 2Nexis Studio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .support-page {
+      min-height: 100vh;
+      padding: 120px 20px 80px;
+      background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-medium) 100%);
+    }
+    
+    .support-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(27, 39, 53, 0.5);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 20px;
+      padding: 60px 50px;
+    }
+    
+    .support-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .support-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .support-subtitle {
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+    }
+    
+    .support-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin: 50px 0 25px;
+      letter-spacing: 1px;
+      border-bottom: 2px solid rgba(0, 255, 204, 0.2);
+      padding-bottom: 10px;
+    }
+    
+    .support-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--color-secondary);
+      margin: 30px 0 15px;
+    }
+    
+    .support-content p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+    
+    .support-content ol, .support-content ul {
+      margin: 15px 0 25px 25px;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+    }
+    
+    .support-content li {
+      margin-bottom: 10px;
+    }
+    
+    .faq-item {
+      background: rgba(0, 255, 204, 0.03);
+      border-left: 3px solid var(--color-primary);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    
+    .faq-answer {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    
+    .contact-box {
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    
+    .contact-box h3 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+    
+    .contact-box a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    
+    .contact-box a:hover {
+      color: var(--color-secondary);
+      text-decoration: underline;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      padding: 12px 25px;
+      background: transparent;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      text-decoration: none;
+      border-radius: 30px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: all var(--transition-fast);
+    }
+    
+    .back-btn:hover {
+      background: rgba(0, 255, 204, 0.1);
+      box-shadow: var(--glow-primary);
+      transform: translateX(-5px);
+    }
+    
+    .steps-list {
+      background: rgba(0, 153, 255, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    @media (max-width: 768px) {
+      .support-container {
+        padding: 40px 30px;
+      }
+      
+      .support-page {
+        padding: 100px 15px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="support-page">
+    <div class="support-container">
+      <a href="/" class="back-btn">
+        <span>←</span> Back to Home
+      </a>
+      
+      <div class="support-header">
+        <h1 class="support-title">Valora Health Support</h1>
+        <p class="support-subtitle">We're here to help you get the most out of your health journey</p>
+      </div>
+      
+      <div class="support-content">
+        <h2>Getting Started</h2>
+        
+        <div class="steps-list">
+          <p><strong>Step 1: Download and Install</strong><br>
+          Download Valora Health from the App Store on your iPhone.</p>
+          
+          <p><strong>Step 2: Complete Onboarding</strong><br>
+          Follow the onboarding walkthrough to set up your profile and health goals.</p>
+          
+          <p><strong>Step 3: Grant Permissions</strong><br>
+          Allow HealthKit access to enable automatic health tracking.</p>
+          
+          <p><strong>Step 4: Connect Apple Watch (Optional)</strong><br>
+          If you have an Apple Watch, the Valora Watch app will automatically install.</p>
+        </div>
+        
+        <h2>Frequently Asked Questions</h2>
+        
+        <h3>General</h3>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: What devices are supported?</div>
+          <div class="faq-answer">A: iPhone (iOS 17+) and Apple Watch (watchOS 10+).</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Is my data secure?</div>
+          <div class="faq-answer">A: Yes. Health data is stored locally on your device. All transmissions are encrypted.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Do I need an Apple Watch?</div>
+          <div class="faq-answer">A: No. Valora works without an Apple Watch, but the Watch enables real-time monitoring.</div>
+        </div>
+        
+        <h3>Apple Watch</h3>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: How do I connect my Apple Watch?</div>
+          <div class="faq-answer">A: The Watch app installs automatically when you install Valora on your iPhone.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Why is my Watch not syncing?</div>
+          <div class="faq-answer">A: Try these steps:
+            <ol>
+              <li>Ensure Bluetooth is enabled on your iPhone</li>
+              <li>Check Valora is installed on your Watch (Watch app > Installed Apps)</li>
+              <li>Restart both devices</li>
+              <li>Open Valora on both devices</li>
+            </ol>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: What does the Watch track?</div>
+          <div class="faq-answer">A: Heart rate, steps, calories, exercise minutes, blood oxygen, and water intake.</div>
+        </div>
+        
+        <h3>AI Health Advisor</h3>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: How do I use the AI Advisor?</div>
+          <div class="faq-answer">A: Open the AI Advisor tab and tap the microphone. Speak naturally for personalised advice.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Does the AI work offline?</div>
+          <div class="faq-answer">A: The AI requires internet. Messages queue when offline and send when you reconnect.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Is my conversation private?</div>
+          <div class="faq-answer">A: Yes. Conversations are encrypted and not permanently stored.</div>
+        </div>
+        
+        <h3>Subscriptions</h3>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: What features are free?</div>
+          <div class="faq-answer">A: Basic health tracking, limited AI queries, medication reminders, Watch sync.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: What does Premium include?</div>
+          <div class="faq-answer">A: Unlimited AI conversations, voice advisor, camera meal recognition, advanced insights.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: How do I cancel my subscription?</div>
+          <div class="faq-answer">A: iPhone Settings > Your Name > Subscriptions > Valora Health > Cancel.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q: Can I get a refund?</div>
+          <div class="faq-answer">A: Refunds are handled by Apple. Contact Apple Support or request through purchase history.</div>
+        </div>
+        
+        <h2>Troubleshooting</h2>
+        
+        <h3>App Crashes</h3>
+        <ul>
+          <li>Update to the latest version from the App Store</li>
+          <li>Restart your iPhone</li>
+          <li>Delete and reinstall (HealthKit data is preserved)</li>
+        </ul>
+        
+        <h3>HealthKit Data Not Showing</h3>
+        <ol>
+          <li>Go to iPhone Settings > Privacy & Security > Health > Valora</li>
+          <li>Ensure all data types are enabled</li>
+          <li>Restart the app</li>
+        </ol>
+        
+        <h3>AI Features Not Working</h3>
+        <ul>
+          <li>Check your internet connection</li>
+          <li>Ensure you haven't exceeded your daily free limit</li>
+          <li>Close and reopen the app</li>
+        </ul>
+        
+        <h3>Watch App Issues</h3>
+        <ul>
+          <li>Ensure Watch is charged and nearby</li>
+          <li>Check for software updates on Watch</li>
+          <li>Reinstall: Watch app > My Watch > Valora > Delete, then reinstall</li>
+        </ul>
+        
+        <div class="contact-box">
+          <h2>Contact Us</h2>
+          
+          <p><strong>Email Support</strong><br>
+          <a href="mailto:support@2networld.com">support@2networld.com</a><br>
+          Response time: Within 48 hours (Monday-Friday)</p>
+          
+          <p><strong>Bug Reports</strong><br>
+          <a href="mailto:bugs@2networld.com">bugs@2networld.com</a><br>
+          Please include: Device model, iOS version, steps to reproduce.</p>
+          
+          <p><strong>Feedback</strong><br>
+          <a href="mailto:feedback@2networld.com">feedback@2networld.com</a><br>
+          We love hearing from our users!</p>
+          
+          <hr style="border: 1px solid rgba(0, 255, 204, 0.1); margin: 30px 0;">
+          
+          <p><strong>Useful Links</strong><br>
+          <a href="/privacy-policy.html">Privacy Policy</a> |
+          <a href="/terms.html">Terms of Service</a> |
+          <a href="/">2Nexis Studio</a></p>
+        </div>
+        
+        <p style="text-align: center; margin-top: 40px; color: var(--color-text-dim);">
+          © 2026 PS Windwood & SON LIMITED (2Nexis Studio)<br>
+          Made with care in London, UK
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

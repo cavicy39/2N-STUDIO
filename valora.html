@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Valora Health - Your Personal AI Health Companion. Track health metrics with Apple Watch integration and get personalized AI advice.">
+  <title>Valora Health | Your Personal AI Health Companion</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .valora-page {
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-medium) 100%);
+    }
+    
+    .valora-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+    
+    .valora-hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .valora-logo {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .valora-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--color-text-muted);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+    
+    .valora-subtitle {
+      font-size: 1.1rem;
+      color: var(--color-text-dim);
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    
+    .valora-description {
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 40px;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+    
+    .cta-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-bg-dark);
+      box-shadow: 0 5px 30px rgba(0, 255, 204, 0.3);
+    }
+    
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(0, 255, 204, 0.5);
+    }
+    
+    .cta-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+    
+    .cta-secondary:hover {
+      background: rgba(0, 255, 204, 0.1);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .section {
+      padding: 80px 20px;
+    }
+    
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: 60px;
+      letter-spacing: 2px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .feature-card {
+      background: rgba(27, 39, 53, 0.5);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      transition: all var(--transition-medium);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--color-primary);
+      box-shadow: 0 20px 60px rgba(0, 255, 204, 0.15);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 15px;
+    }
+    
+    .feature-description {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+    
+    .pricing-card {
+      background: rgba(27, 39, 53, 0.5);
+      border: 2px solid rgba(0, 255, 204, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all var(--transition-medium);
+    }
+    
+    .pricing-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-5px);
+    }
+    
+    .pricing-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--color-text);
+      margin-bottom: 20px;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .pricing-features li:before {
+      content: "✓ ";
+      color: var(--color-primary);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    
+    .download-section {
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 20px;
+      padding: 60px;
+      text-align: center;
+      margin: 60px 0;
+    }
+    
+    .requirements {
+      color: var(--color-text-dim);
+      font-size: 0.95rem;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .download-section {
+        padding: 40px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="valora-page">
+    <!-- Hero Section -->
+    <section class="valora-hero">
+      <div class="valora-hero-content">
+        <h1 class="valora-logo">Valora Health</h1>
+        <h2 class="valora-tagline">Your Personal AI Health Companion</h2>
+        <p class="valora-subtitle">Unlock your health with Vitality, Agility, Longevity</p>
+        <p class="valora-description">
+          Valora combines the power of artificial intelligence with seamless Apple Watch integration to give you personalised health insights like never before.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com" class="cta-btn cta-primary">Download on App Store</a>
+          <a href="/valora-support.html" class="cta-btn cta-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section">
+      <div class="section-container">
+        <h2 class="section-title">Key <span class="accent">Features</span></h2>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3 class="feature-title">AI-Powered Health Advisor</h3>
+            <p class="feature-description">
+              Talk to Valora using natural voice conversations. Get personalised advice based on YOUR health data - not generic tips.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Comprehensive Health Tracking</h3>
+            <p class="feature-description">
+              Monitor heart rate, steps, sleep quality, blood oxygen, and more. All synced automatically from your Apple Watch.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">💊</div>
+            <h3 class="feature-title">Medication Management</h3>
+            <p class="feature-description">
+              Never miss a dose. Set smart reminders, track adherence, and get drug interaction warnings.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🍎</div>
+            <h3 class="feature-title">Nutrition Tracking</h3>
+            <p class="feature-description">
+              Snap a photo of your meal for instant calorie analysis. Scan barcodes for packaged foods.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">⌚</div>
+            <h3 class="feature-title">Apple Watch Companion</h3>
+            <p class="feature-description">
+              A full-featured Watch app with 6 screens. Track health, log symptoms, and talk to AI - right from your wrist.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">Privacy First</h3>
+            <p class="feature-description">
+              Your health data stays on YOUR device. We never sell your information. GDPR compliant.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="section" style="background: rgba(0, 0, 0, 0.3);">
+      <div class="section-container">
+        <h2 class="section-title">Pricing <span class="accent">Plans</span></h2>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-name">Free</h3>
+            <div class="pricing-price">£0</div>
+            <ul class="pricing-features">
+              <li>Basic health tracking</li>
+              <li>Limited AI queries</li>
+              <li>Medication reminders</li>
+              <li>Apple Watch sync</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-card" style="border-color: var(--color-primary); transform: scale(1.05);">
+            <h3 class="pricing-name">Premium</h3>
+            <div class="pricing-price">£4.99<span style="font-size: 1rem; color: var(--color-text-muted);">/month</span></div>
+            <ul class="pricing-features">
+              <li>Unlimited AI conversations</li>
+              <li>Voice health advisor</li>
+              <li>Camera meal recognition</li>
+              <li>Advanced health insights</li>
+              <li>Everything in Free</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-card">
+            <h3 class="pricing-name">Pro</h3>
+            <div class="pricing-price">£9.99<span style="font-size: 1rem; color: var(--color-text-muted);">/month</span></div>
+            <ul class="pricing-features">
+              <li>Everything in Premium</li>
+              <li>Advanced analytics</li>
+              <li>Family sharing (soon)</li>
+              <li>Priority support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section class="section">
+      <div class="section-container">
+        <div class="download-section">
+          <h2 class="section-title">Download <span class="accent">Now</span></h2>
+          <p style="font-size: 1.2rem; color: var(--color-text-muted); margin-bottom: 30px;">
+            Available on the App Store
+          </p>
+          <a href="https://apps.apple.com" class="cta-btn cta-primary" style="font-size: 1.2rem; padding: 20px 50px;">
+            Download for iPhone
+          </a>
+          <p class="requirements">
+            Requires iOS 17.0 or later<br>
+            Compatible with Apple Watch (watchOS 10.0+)
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section" style="background: rgba(0, 0, 0, 0.3); text-align: center;">
+      <div class="section-container">
+        <h2 class="section-title">About <span class="accent">Us</span></h2>
+        <p style="max-width: 800px; margin: 0 auto; color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem;">
+          Valora Health is developed by <strong style="color: var(--color-primary);">2Nexis Studio</strong> (PS Windwood & SON LIMITED), a UK-based technology company dedicated to making health technology accessible, intelligent, and personal.
+        </p>
+        
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(0, 255, 204, 0.1);">
+          <h3 style="font-family: var(--font-display); color: var(--color-primary); margin-bottom: 20px;">Contact</h3>
+          <p style="color: var(--color-text-muted);">
+            <strong>Support:</strong> <a href="mailto:support@2networld.com" style="color: var(--color-primary); text-decoration: none;">support@2networld.com</a><br>
+            <strong>Website:</strong> <a href="https://2networld.com" style="color: var(--color-primary); text-decoration: none;">https://2networld.com</a>
+          </p>
+          <p style="margin-top: 30px;">
+            <a href="/privacy-policy.html" style="color: var(--color-text-muted); text-decoration: none; margin: 0 15px;">Privacy Policy</a> |
+            <a href="/valora-support.html" style="color: var(--color-text-muted); text-decoration: none; margin: 0 15px;">Support</a> |
+            <a href="/terms.html" style="color: var(--color-text-muted); text-decoration: none; margin: 0 15px;">Terms</a>
+          </p>
+        </div>
+        
+        <p style="margin-top: 60px; color: var(--color-text-dim); font-size: 0.9rem;">
+          © 2026 PS Windwood & SON LIMITED (2Nexis Studio)<br>
+          London, United Kingdom
+        </p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+
